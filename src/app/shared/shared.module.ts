@@ -37,6 +37,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 @NgModule({
     imports: [
@@ -78,7 +79,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
         MatBadgeModule,
         MatProgressBarModule,
         MatSidenavModule,
-      MatSortModule,
+        MatSortModule,
 
         RouterModule,
         TranslateModule,
@@ -120,13 +121,15 @@ import { MatSidenavModule } from "@angular/material/sidenav";
     TileComponent,
     MatStepperModule,
     TilesBoxComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    BreadcrumbsComponent
   ],
   declarations: [
     FooterComponent,
     TileComponent,
     CheckboxComponent,
     TilesBoxComponent,
+    BreadcrumbsComponent
     // FilterPipe
   ],
 })
