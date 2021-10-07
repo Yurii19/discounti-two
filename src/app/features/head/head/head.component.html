@@ -1,0 +1,127 @@
+<div class="cover">
+  <div class="header">
+    <div class="header-container">
+      <div class="left-block col-12 col-md-8">
+        <div>
+          <img src="../../../../assets/logo.png" alt="App logo" height="50" />
+        </div>
+
+        <div class="location-block mr-4">
+          <mat-icon aria-hidden="false" aria-label="Home">location_on</mat-icon>
+          <span *ngIf="user$ | async as user">
+            {{ user.city.name }}
+          </span>
+        </div>
+
+        <div
+          class="search-container col-12 col-sm-5 col-md-4"
+          [hidden]="!isHomeTile"
+        >
+          <form>
+            <mat-form-field class="w-100" appearance="legacy">
+              <mat-label>{{ "COMMON.Head.search" | translate }}</mat-label>
+              <input
+                (focus)="onFocusEvent($event)"
+                (blur)="onBlur($event)"
+                #discountSearchInput
+                autocomplete="off"
+                matInput
+                type="text"
+                name="filter"
+                placeholder="{{ 'COMMON.Head.search' | translate }}"
+                class=""
+              />
+            </mat-form-field>
+          </form>
+          <mat-icon matPrefix>search</mat-icon>
+        </div>
+      </div>
+
+      <div class="right-block ml-auto col-4">
+        <div class="notifications">
+          <mat-icon
+            [matBadge]="iSnotifications$"
+            matBadgeColor="warn"
+            matBadgeSize="small"
+            class="notification mr-sm-5 mr-3"
+            [matBadgeHidden]="iSnotifications$ == 0"
+            (click)="controlListNotes()"
+          >
+            notifications_none
+            <mat-list
+              *ngIf="listIsVisibleOfUnreadNotes"
+              (click)="clearNotifications()"
+            >
+              <mat-list-item *ngFor="let note of unreadNotifications">
+                <span>
+                  {{ note.nType }}
+                  <b>{{ note.nPromo }}</b>
+                  for
+                  <b>{{ note.nName }}</b>
+                </span>
+              </mat-list-item>
+            </mat-list>
+          </mat-icon>
+        </div>
+
+        <div class="user-block">
+          <button
+            mat-button
+            [matMenuTriggerFor]="menu"
+            *ngIf="user$ | async as user"
+          >
+            <mat-icon
+              aria-hidden="false"
+              class=""
+              aria-label="Example home icon"
+            >
+              {{ this.userRole === 'ROLE_USER' ? 'person_outline' : 'person' }}
+            </mat-icon>
+            {{ user.firstName + ' ' + user.lastName }}
+          </button>
+
+          <mat-menu #menu="matMenu">
+            <button
+              mat-menu-item
+              (click)="onClick(it.function, this)"
+              *ngFor="let it of profileMenuItems"
+            >
+              {{ it.label | translate }}
+            </button>
+          </mat-menu>
+        </div>
+
+        <button mat-button [matMenuTriggerFor]="langMenu">
+          {{ language$ | async | uppercase }}
+        </button>
+        <mat-menu #langMenu="matMenu">
+          <button
+            mat-menu-item
+            (click)="changeLocale(language)"
+            *ngFor="let language of languages"
+          >
+            {{ language.toUpperCase() }}
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <nav mat-tab-nav-bar class="">
+        <a
+          mat-tab-link
+          *ngFor="let tab of tabItems"
+          class="pl-3 p-0"
+          (click)="activeLink = tab.link"
+          [active]="activeLink == tab.link"
+          [routerLink]="tab.link"
+        >
+          {{ tab.label | translate }}
+        </a>
+      </nav>
+    </div>
+    <ngx-spinner></ngx-spinner>
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+</div>

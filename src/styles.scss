@@ -1,0 +1,40 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+/* notification styles */
+.default-notification-overlay {
+  color: rgba(0,0,0,.87);
+  background-color: #fff;
+}
+
+.info-notification-overlay {
+  color: #fff;
+  background-color: #03a9f4;
+}
+
+.success-notification-overlay {
+  color: rgba(0,0,0,.87);
+  background-color: #66bb6a;
+}
+
+.warning-notification-overlay {
+  color: rgba(0,0,0,.87);
+  background-color: #ffca28;
+}
+
+.error-notification-overlay {
+  color: #fff;
+  background-color: #d81b60;
+}
+
+
+

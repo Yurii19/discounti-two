@@ -1,0 +1,271 @@
+<div class="container">
+  <form class="form" [formGroup]="vendorForm">
+    <div class="form-row">
+      <!-- Vendor name -->
+      <mat-form-field class="example-full-width form-field" appearance="fill">
+        <mat-label>
+          {{ 'COMMON.Stepper.FirstStep.vendorName' | translate }}
+        </mat-label>
+        <input
+          type="text"
+          aria-label="vendor name"
+          placeholder="{{
+            'COMMON.Stepper.FirstStep.vendorNamePlaceholder' | translate
+          }}"
+          class="form-input"
+          matInput
+          formControlName="name"
+          [matAutocomplete]="name"
+          (ngSubmit)="saveVendor()"
+        />
+        <mat-autocomplete
+          #name="matAutocomplete"
+          (optionSelected)="selectVendor($event.option.value)"
+          [displayWith]="displayVendorName"
+        >
+          <mat-option *ngFor="let vendor of vendors$ | async" [value]="vendor">
+            {{ vendor.name }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error
+          *ngIf="
+            vendorForm.controls['name'].invalid &&
+            vendorForm.controls['name'].touched
+          "
+        >
+          <span *ngIf="vendorForm.controls.name.errors?.required">
+            {{ 'COMMON.Stepper.FirstStep.vendorNameError' | translate }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <!-- /Vendor name -->
+    </div>
+    <div class="form-row">
+      <!-- Vendor Description -->
+      <mat-form-field class="example-full-width form-field" appearance="fill">
+        <mat-label>
+          {{ 'COMMON.Stepper.FirstStep.vendorDescription' | translate }}
+        </mat-label>
+        <textarea
+          matInput
+          placeholder="{{
+            'COMMON.Stepper.FirstStep.vendorDescriptionPlaceholder' | translate
+          }}"
+          formControlName="description"
+        ></textarea>
+        <mat-error
+          *ngIf="
+            vendorForm.controls['description'].invalid &&
+            vendorForm.controls['description'].touched
+          "
+        >
+          <span *ngIf="vendorForm.controls.description.errors?.required">
+            {{ 'COMMON.Stepper.FirstStep.vendorDescriptionError' | translate }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <!-- /Vendor Description -->
+    </div>
+
+    <div class="form-row">
+      <!-- Vendor contacts -->
+      <mat-form-field class="example-full-width form-field" appearance="fill">
+        <mat-label>
+          {{ 'COMMON.Stepper.FirstStep.vendorContacts' | translate }}
+        </mat-label>
+        <input
+          matInput
+          placeholder="{{
+            'COMMON.Stepper.FirstStep.vendorContactsPlaceholder' | translate
+          }}"
+          formControlName="contacts"
+        />
+        <mat-error
+          *ngIf="
+            vendorForm.controls['contacts'].invalid &&
+            vendorForm.controls['contacts'].touched
+          "
+        >
+          <span *ngIf="vendorForm.controls.contacts.errors?.required">
+            {{ 'COMMON.Stepper.FirstStep.vendorContactsError' | translate }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <!-- /Vendor contacts -->
+    </div>
+    <div class="first-step__btns btns-wrapper">
+      <button
+        class="save-btn"
+        mat-flat-button
+        color="warn"
+        (click)="resetForm(); $event.preventDefault()"
+      >
+        {{ 'COMMON.Global.clear' | translate }}
+      </button>
+      <button
+        type="submit"
+        class="save-btn"
+        mat-flat-button
+        color="primary"
+        (click)="saveVendor()"
+      >
+        {{ 'COMMON.Global.save' | translate }}
+      </button>
+      <button
+        class="save-btn"
+        mat-flat-button
+        color="warn"
+        (click)="removeVendor(); $event.preventDefault()"
+      >
+        {{ 'COMMON.Global.delete' | translate }}
+      </button>
+    </div>
+  </form>
+
+  <div class="form-location">
+    <h3>{{ 'COMMON.Stepper.FirstStep.country' | translate }}</h3>
+    <form class="add-city">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>
+          {{ 'COMMON.Stepper.FirstStep.countryLabel' | translate }}
+        </mat-label>
+        <input
+          type="text"
+          (focus)="focusOncountry()"
+          placeholder="Pick one"
+          aria-label="Number"
+          matInput
+          [formControl]="countryControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let country of filteredCountry | async"
+            [value]="country.name"
+            (click)="selectCountry(country.id)"
+          >
+            {{ country.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button
+        type="submit"
+        class="save-btn"
+        mat-flat-button
+        color="primary"
+        (click)="addCountry()"
+      >
+        {{ 'COMMON.Global.add' | translate }}
+      </button>
+      <button
+        type="submit"
+        class="save-btn"
+        mat-flat-button
+        color="warn"
+        (click)="removeCountry()"
+      >
+        {{ 'COMMON.Global.delete' | translate }}
+      </button>
+    </form>
+    <h3>{{ 'COMMON.Stepper.FirstStep.city' | translate }}</h3>
+    <form class="add-city">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>
+          {{ 'COMMON.Stepper.FirstStep.cityLabel' | translate }}
+        </mat-label>
+        <input
+          type="text"
+          (focus)="focusOncountry()"
+          placeholder="Pick one"
+          aria-label="Number"
+          matInput
+          [formControl]="cityControl"
+          [matAutocomplete]="autoC"
+        />
+        <mat-autocomplete autoActiveFirstOption #autoC="matAutocomplete">
+          <mat-option
+            *ngFor="let city of filteredCities | async"
+            [value]="city.name"
+            (onSelectionChange)="selectCity(city.id)"
+          >
+            {{ city.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button
+        type="submit"
+        class="save-btn"
+        mat-flat-button
+        color="primary"
+        (click)="addCity()"
+      >
+        {{ 'COMMON.Global.add' | translate }}
+      </button>
+      <button
+        class="save-btn"
+        mat-flat-button
+        color="warn"
+        (click)="removeCity()"
+      >
+        {{ 'COMMON.Global.delete' | translate }}
+      </button>
+    </form>
+    <h3>{{ 'COMMON.Stepper.FirstStep.coordinates' | translate }}</h3>
+    <form action="" class="input-cords">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>
+            {{ 'COMMON.Stepper.FirstStep.latitude' | translate }}
+          </mat-label>
+          <input type="number" matInput [formControl]="latControl" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>
+            {{ 'COMMON.Stepper.FirstStep.longitude' | translate }}
+          </mat-label>
+          <input type="number" matInput [formControl]="longControl" />
+        </mat-form-field>
+      </div>
+
+      <button
+        type="submit"
+        class="save-btn"
+        mat-flat-button
+        color="primary"
+        (click)="addCoordinates()"
+      >
+        {{ 'COMMON.Global.add' | translate }}
+      </button>
+    </form>
+
+    <h3>{{ 'COMMON.Stepper.FirstStep.removeCoordinates' | translate }}</h3>
+    <form class="remove-location">
+      <mat-form-field appearance="fill">
+        <mat-label>
+          {{ 'COMMON.Stepper.FirstStep.locations' | translate }}
+        </mat-label>
+        <mat-select
+          [formControl]="locationsControl"
+          (selectionChange)="selectLocation($event.value)"
+        >
+          <mat-option
+            *ngFor="let location of vLocationsOptions$"
+            [value]="location"
+          >
+            {{ location.city }} - {{ location.lat | number }} :
+            {{ location.long | number }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        class="save-btn"
+        mat-flat-button
+        color="warn"
+        (click)="removeLocation()"
+      >
+        {{ 'COMMON.Global.delete' | translate }}
+      </button>
+    </form>
+  </div>
+</div>

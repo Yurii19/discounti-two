@@ -1,0 +1,4 @@
+<app-tiles-box [discountsData$]="profileFavorite$ | async"></app-tiles-box>
+<p class="notFound" *ngIf="(profileFavorite$ | async)?.length == 0">
+  {{ 'COMMON.Profile.favoriteTab' | translate }}
+</p>

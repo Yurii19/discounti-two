@@ -1,0 +1,47 @@
+<div class="vendor" *ngIf="selectedVendor$ | async as data">
+  <mat-stepper orientation="vertical">
+    <!-- Step 1: Create vendor -->
+    <mat-step>
+      <ng-template matStepLabel>
+        <div class="vendor-info">
+
+          {{ 'COMMON.Stepper.vendorInfo' | translate }}
+          <h3>
+            
+            <b>{{ data.name }}</b>
+          </h3>
+        </div>
+      </ng-template>
+      <ng-template matStepContent>
+        <app-step-create-vendor></app-step-create-vendor>
+      </ng-template>
+    </mat-step>
+
+    <!-- Step 2: Create BP or Edit BP -->
+    <mat-step>
+      <ng-template matStepLabel>
+        {{ 'COMMON.Stepper.vendorBpInfo' | translate }}
+      </ng-template>
+      <ng-template matStepContent>
+        <!-- CREATE -->
+        <!-- <app-step-create-bp></app-step-create-bp> -->
+        <!-- EDIT -->
+        <app-step-edit-bp></app-step-edit-bp>
+      </ng-template>
+    </mat-step>
+
+    <!-- Step 3: Message -->
+    <mat-step>
+      <ng-template matStepLabel>
+        {{ 'COMMON.Stepper.vendorMessage' | translate }}
+      </ng-template>
+      <ng-template matStepContent>
+        <div class="message-wrapper">
+          <span class="message">
+            {{ 'COMMON.Stepper.finalMessage' | translate }}
+          </span>
+        </div>
+      </ng-template>
+    </mat-step>
+  </mat-stepper>
+</div>

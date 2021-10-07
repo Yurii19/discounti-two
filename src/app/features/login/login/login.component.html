@@ -1,0 +1,54 @@
+<div class="login">
+  <div class="login-container">
+    <div class="info">
+      <img class="info-img" src="../../../../assets/logo.png" alt="Discounti" />
+      <div class="info-description">
+        Best offers for you!
+      </div>
+    </div>
+
+    <div class="form-wrapper">
+      <form class="form" novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h1 class="form-heading">Log In</h1>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="username" autocomplete="username"/>
+          <mat-error
+            *ngIf="
+              form.controls['username'].invalid &&
+              form.controls['username'].touched
+            "
+          >
+            <span *ngIf="form.controls.username.errors?.required">
+              Email can't be empty
+            </span>
+            <span *ngIf="form.controls.username.errors?.email">
+              Please provide a valid Email
+            </span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-password">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" autocomplete="current-password"/>
+          <mat-error
+            *ngIf="
+              form.controls['password'].invalid &&
+              form.controls['password'].touched
+            "
+          >
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <button
+          class="form-button"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid || form.disabled"
+        >
+          Log In
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

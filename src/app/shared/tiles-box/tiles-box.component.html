@@ -1,0 +1,7 @@
+<section class="main-section">
+  <app-tile
+    *ngFor="let discount of discountsData$"
+    [discount$]="discount"
+    (sendId)="dropIdFromBox($event)"
+  ></app-tile>
+</section>

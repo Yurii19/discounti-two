@@ -1,0 +1,30 @@
+<div class="couponHistoryTable" *ngIf="profileCoupons$ | async as data">
+
+  <table mat-table [dataSource]="data">
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Discount Name</th>
+      <td mat-cell *matCellDef="let data">{{ data.discount.name }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Promo">
+      <th mat-header-cell *matHeaderCellDef>Promo</th>
+      <td mat-cell *matCellDef="let data">
+        {{ data.discount.promo }}
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="EndDate" class="d-sm-none">
+      <th mat-header-cell *matHeaderCellDef>End Date</th>
+      <td mat-cell *matCellDef="let data">
+        {{ data.discount.endTime | date: "short" }}
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayHistory"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayHistory"></tr>
+  </table>
+  
+</div>
+<p class="notFound" *ngIf="(profileCoupons$ | async)?.length == 0">
+  {{ 'COMMON.Profile.historyTab' | translate }}
+</p>

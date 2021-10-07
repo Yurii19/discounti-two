@@ -1,0 +1,108 @@
+$base-color: hsl(196, 85%, 59%);
+$grey: hsla(0, 0%, 60%, 0.5);
+
+.profile {
+  font-weight: normal;
+  p {
+    color: $grey;
+    font-size: 16px;
+  }
+
+  span {
+    color: $base-color;
+    font-size: 24px;
+  }
+}
+
+.green {
+  background-color: rgb(183, 255, 183);
+}
+.red {
+  background-color: rgb(255, 183, 183);
+}
+.white {
+  background-color: #fff;
+}
+
+//tabs
+
+:host {
+  > .container {
+    max-width: 1264px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    background: none;
+  }
+  ::ng-deep {
+    .mat-tab-nav-bar {
+      display: table-cell;
+      text-align: left;
+      vertical-align: top;
+    }
+    .mat-tab-header,
+    .mat-tab-nav-bar {
+      border-bottom: 0;
+    }
+    .mat-tab-link{
+      text-align: left;
+      min-width: 50px;
+      justify-content: left;
+      border-radius: 10px 50px 10px 10px;
+      padding: 10px;
+      opacity: 1;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      &:hover{
+        background-color: $base-color;
+        color: #fff;
+      }
+    }
+    .wrapper {
+      flex-direction: row;
+    }
+    .mat-tab-links {
+      flex-direction: column;
+    }
+    .mat-ink-bar {
+      height: 100%;
+      left: 98% !important;
+      a{
+        text-align: left;
+
+      }
+    }
+    .mat-tab-body-wrapper {
+      display: table-cell;
+      padding: 0;
+    }
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  flex: 1 0 auto;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#content {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 24px 0;
+  box-sizing: border-box;
+}
+
+#content,
+#main-content {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}

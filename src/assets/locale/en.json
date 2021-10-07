@@ -1,0 +1,157 @@
+{
+  "COMMON": {
+    "description": {
+      "currency": "UAH",
+      "rightpanel": {
+        "contacts": "Contacts",
+        "dateFrom": "From",
+        "dateTo": "To",
+        "coupon": "Activate coupon",
+        "sale": "Discount  "
+      },
+      "title": {
+        "bp": "Bonus program description",
+        "vendor": "Vendor description"
+      }
+    },
+    "statistic": {
+      "vendors": {
+        "views": "Number of views",
+        "discounts": "Number of discounts",
+        "name": "Vendor's name",
+        "used": "Used discounts"
+      },
+      "categories": {
+        "views": "Number of views",
+        "discounts": "Number of discounts",
+        "name": "Category's name",
+        "used": "Used discounts"
+      },
+      "excel": "Export as Excel",
+      "title": {
+        "discounts": "Statistic by discounts",
+        "vendors": "Statistic by vendors",
+        "categories": "Statistic by category"
+      }
+    },
+    "Head": {
+      "name": "Nikita Martinov",
+      "search": "Search",
+      "selectCategory": "Select category" ,
+      "history": "History" ,
+      "favorite": "Favorite" ,
+      "activeDiscounts": "Active discounts" ,
+      "logout": "Logout" ,
+      "home": "Home",
+      "profile": "Profile",
+      "vendor": "Vendor",
+      "statistic": "Statistic"
+    },
+    "Home": {
+      "sort": "Sort by",
+      "default": "Default",
+      "startTime": "Start time",
+      "endTime": "Time to expire",
+      "name": "Name"
+    },
+    "SideBar": {
+      "vendor": "Select a vendor",
+      "category": "Select a category",
+      "location": "Location",
+      "tag": "Pick tag",
+      "none": "None",
+      "apply": "Apply",
+      "reset": "Reset"
+    },
+    "Tile": {
+      "info": "More info",
+      "want": "Want",
+      "discount": "Discount",
+      "vendor": "Vendor",
+      "expired": "Expired"
+    },
+    "Profile": {
+      "activeTab": "You don't have any active discounts now :(",
+      "favoriteTab": "You don't have any favorites yet :(",
+      "historyTab": "You don't have any history :(",
+      "logged": "You are logged in as",
+      "location": "Location",
+      "favorite": "Favorite",
+      "history": "History",
+      "activeDiscounts": "Active Discounts",
+      "category": "Category",
+      "discountName": "Discount Name",
+      "promo": "Promo",
+      "endDate": "End Date",
+      "title": {
+        "history": "History",
+        "favorite": "Favourites",
+        "active": "Active discounts"
+      }
+    },
+    "Stepper": {
+      "vendorInfo": "Information about Vendor",
+      "selectedVendor": "Selected vendor",
+      "FirstStep": {
+        "vendorName": "Vendor Name",
+        "vendorNamePlaceholder": "Add vendor name",
+        "vendorNameError": "Vendor name can't be empty",
+        "vendorDescription": "Description",
+        "vendorDescriptionPlaceholder": "Add description",
+        "vendorDescriptionError": "Description can't be empty",
+        "vendorContacts": "Vendor Contacts",
+        "vendorContactsPlaceholder": "Add contacts",
+        "vendorContactsError": "Contacts can't be empty",
+        "country": "Select or add country",
+        "countryLabel": "Country",
+        "city": "Select or add city",
+        "cityLabel": "City",
+        "coordinates": "Add coordinates",
+        "latitude": "Latitude",
+        "longitude": "Longtitude",
+        "removeCoordinates": "Remove coordinates",
+        "locations": "Locations"
+      },
+      "vendorBpInfo": "Information about Discount",
+      "SecondStep": {
+        "vendor": "Vendor",
+        "addBp": "Add discount",
+        "editBp": "Edit discount",
+        "bpName": "Name",
+        "addBpName": "Add discount",
+        "category": "Category",
+        "addCategory": "Add new category",
+        "tags": "Tags",
+        "addTags": "Add new tag",
+        "bpPhotos": "Photos",
+        "bpPhotosPlaceholder": "Add some photos",
+        "description": "Description",
+        "descriptionPlaceholder": "Add description",
+        "eventStart": "Event's start",
+        "eventEnd": "Event's end",
+        "type": "Discount's type",
+        "typePercent": "PERCENT",
+        "typePrice": "PRICE",
+        "bonusSize": "Discount size",
+        "promo": "Promo",
+        "location": "Locations",
+        "lat": "Lat",
+        "long": "Long"
+      },
+      "vendorMessage": "Message",
+      "finalMessage": "All information were saved successfully!"
+    },
+    "Global": {
+      "back": "Back",
+      "clear": "Clear",
+      "save": "Save",
+      "delete": "Delete",
+      "add": "Add",
+      "logout": "Logout"
+    }
+  },
+  "LANGUAGES": {
+    "EN": "EN",
+    "RU": "RU"
+  }
+}

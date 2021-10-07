@@ -1,0 +1,47 @@
+$base-color: hsl(196, 85%, 59%);
+$grey: hsla(0, 0%, 60%, 0.5);
+
+.history {
+  //width: 92%;
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: 0 auto;
+  justify-content: flex-start;
+
+  &-item {
+    //width: 270px;
+    height: 180px;
+    margin: 10px;
+    background-color: #fff;
+    border: 2px solid $grey;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .dicountName {
+      color: $base-color;
+    }
+    .dicountPromo {
+      font-size: 24px;
+      color: hsl(0, 0%, 0%);
+    }
+    .dicountStart {
+      color: hsla(150, 100%, 30%, 0.5);
+      font-weight: bold;
+    }
+    .dicountEnd {
+      color: hsla(0, 100%, 40%, 0.5);
+      font-weight: bold;
+    }
+  }
+}
+
+.notFound {
+  font-size: 24px;
+  color: hsla(0, 0%, 60%, 0.5);
+  text-align: center;
+  margin-top: 30px;
+}

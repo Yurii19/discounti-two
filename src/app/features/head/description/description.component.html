@@ -1,0 +1,75 @@
+<div class="container-fluid" *ngIf=" descriptionData$ | async as data">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-7 pt-5">
+      <h1 class="vendorName">{{ data.name }}</h1>
+      <section class="article-title">
+        <mat-icon class="icon">place</mat-icon>
+        <span>{{ data.vendorLocations[0].city.countryName}}</span>, <span>{{data.vendorLocations[0].city.name }}</span>
+      </section>
+
+      <section class="article-title map-wrapper pb-4 pt-2">
+        <app-map [markers]="discountMarker" ></app-map>
+      </section>
+
+      <section class="article-title">
+        <h3>{{ 'COMMON.description.title.bp' | translate }}</h3>
+        <p>{{ data.description }}</p>
+      </section>
+
+      <section class="article-title">
+        <h3>{{ 'COMMON.description.title.vendor' | translate }}</h3>
+        <p>{{ data.vendor.description }}</p>
+      </section>
+
+
+      <section class="article-title locations">
+        <div *ngFor="let location of data.vendorLocations">
+          <mat-icon class="icon">place</mat-icon>
+          <span>{{ location.city.countryName}}</span>, <span>{{location.city.name }}</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-md-3 pt-5">
+      <div class="sticky-wrapper">
+        <div class="discount mb-3 ">
+          <span *ngIf="data.discountType === 'PERCENT'">{{ 'COMMON.description.rightpanel.sale' | translate }}</span>
+          <div class="discount-num"><span *ngIf="data.discountType === 'PERCENT'">-</span><span *ngIf="data.discountType === 'PRICE'">$</span> {{ data.value }} <span *ngIf="data.discountType === 'PERCENT'">%</span></div>
+        </div>
+
+        <button mat-raised-button color="accent">
+          <div class="activate-btn" (click)="activateCoupon()">{{ 'COMMON.description.rightpanel.coupon' | translate }}</div>
+        </button>
+
+        <div class="bpDate my-2">
+          <span><strong>{{ 'COMMON.description.rightpanel.dateFrom' | translate }}</strong></span>
+          {{ data.startTime | date :"dd.MM.yyyy" }}
+          <span><strong>{{ 'COMMON.description.rightpanel.dateTo' | translate }}</strong></span>
+          {{ data.endTime | date :"dd.MM.yyyy" }}
+        </div>
+
+        <button mat-fab [color]="data.favorite ? 'warn' : 'basic'" aria-label="Add to favorite" (click)="addToFavorite(data)">
+          <mat-icon class="favorite">favorite</mat-icon>
+        </button>
+
+        <div class="carousel my-5">
+          <app-carousel  [images]="data.discountImages"></app-carousel>
+        </div>
+
+        <div class="address-block" id="address">
+          <h2>{{ 'COMMON.description.rightpanel.contacts' | translate }}</h2>
+
+          <div class="vendor">{{ data.vendor.name}}</div>
+          <div class="websites">
+            <a target="_blank" rel="nofollow" href="">Website.com.ua</a><br>
+            <a target="_blank" rel="nofollow" href="">Facebook</a><br>
+            <a target="_blank" rel="nofollow" href="">Instagram</a>
+          </div>
+
+          <div class="phones">
+            <b>{{ data.vendor.contacts }}</b>
+          </div>
+
+    <div class="col-md-1"></div>
+  </div>

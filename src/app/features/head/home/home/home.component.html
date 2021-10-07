@@ -1,0 +1,50 @@
+<div class="container">
+  <!-- <span> >>>>{{observableFilterParam | async}}</span> -->
+  <div class="control-bar">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'COMMON.Home.sort' | translate }}</mat-label>
+      <mat-select
+        matNativeControl
+        (selectionChange)="sortDiscountsData($event.value)"
+        [disabled]="isMap | async"
+        [(value)]="currentSortValue"
+      >
+        <mat-option *ngFor="let el of sortValuesSet" [value]="el.value">
+          {{ el.uiValue | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-button-toggle-group
+      name="fontStyle"
+      aria-label="Font Style"
+      #group="matButtonToggleGroup"
+      (change)="setIsMap(group.value)"
+    >
+      <mat-button-toggle value="map" [checked]="isMap | async">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">
+          map
+        </mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="list" [checked]="!(isMap | async)">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">
+          list_alt
+        </mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="main-row">
+    <div class="sidebar">
+      <app-side-bar-filter></app-side-bar-filter>
+    </div>
+
+    <div class="content-area">
+      <section class="main-section" *ngIf="!(isMap | async)">
+        <app-tiles-box [discountsData$]="discountsData | async"></app-tiles-box>
+      </section>
+      <section class="map" *ngIf="isMap | async">
+        <app-map *ngIf="markers$ | async as data" [markers]="data"></app-map>
+      </section>
+    </div>
+  </div>
+</div>

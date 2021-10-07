@@ -1,0 +1,45 @@
+<div class="profile pt-5">
+  <div
+    class="d-flex flex-wrap justify-content-center text-center m-0"
+    *ngIf="user$ | async as data"
+  >
+    <div class="col-md-4 col-sm-12 h5">
+      <p>
+        {{ 'COMMON.Profile.logged' | translate }}:
+        <span>{{ data.role }}</span>
+      </p>
+    </div>
+    <div class="col-md-4 col-sm-12 h5">
+      <p>
+        Email:
+        <span>{{ data.email }}</span>
+      </p>
+    </div>
+    <div class="col-md-4 col-sm-12 h5 blueColor">
+      <p>
+        {{ 'COMMON.Profile.location' | translate }}:
+        <span>{{ data.city.name }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="content">
+      <div id="main-content">
+      <div class="wrapper row px-3">
+          <nav mat-tab-nav-bar class="col-12 col-md-3 col-lg-3 col-xl-2">
+            <a mat-tab-link
+               *ngFor="let link of tabs"
+               [routerLink]="link.path"
+               routerLinkActive="active-link">
+              {{link.tabName | translate}}
+            </a>
+          </nav>
+        <div class="mat-tab-body-wrapper mx-auto col-9 col-sm-5 col-md-8 col-lg-8 col-xl-10">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

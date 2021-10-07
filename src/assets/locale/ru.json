@@ -1,0 +1,157 @@
+{
+  "COMMON": {
+    "description": {
+      "currency": "грн",
+      "rightpanel": {
+        "contacts": "Контакты",
+        "dateFrom": "От",
+        "dateTo": "До",
+        "coupon": "Активировать куппон",
+        "sale": "Скидка  "
+      },
+      "title": {
+        "bp": "Описание бонусной программы",
+        "vendor": "Описание вендора"
+      }
+    },
+    "statistic": {
+      "vendors": {
+        "views": "Количество просмотров",
+        "discounts": "Количество скидок",
+        "name": "Имя вендора",
+        "used": "Использовано скидок"
+      },
+      "categories": {
+        "views": "Количество просмотров",
+        "discounts": "Количество скидок",
+        "name": "Название категории",
+        "used": "Использовано скидок"
+      },
+      "excel": "Експорт в Excel",
+      "title": {
+        "discounts": "Статистика по скидкам",
+        "vendors": "Статистика по вендорам",
+        "categories": "Статистика по категориям"
+      }
+    },
+    "Head": {
+      "name": "Никита Мартынов",
+      "search": "Поиск",
+      "selectCategory": "Выбрать категорию" ,
+      "history": "История" ,
+      "favorite": "Избранное" ,
+      "activeDiscounts": "Активные дискаунты" ,
+      "logout": "Выйти" ,
+      "home": "Домашняя",
+      "profile": "Профиль",
+      "vendor": "Вендор",
+      "statistic": "Статистика"
+    },
+    "Home": {
+      "sort": "Сортировать по",
+      "default": "По умолчанию",
+      "startTime": "По дате начала",
+      "endTime": "По дате окончания",
+      "name": "По имени"
+    },
+    "SideBar": {
+      "vendor": "Выберите вендора",
+      "category": "Выберите категорию",
+      "location": "Локация",
+      "tag": "Выберите тeг",
+      "none": "Ничего",
+      "apply": "Применить",
+      "reset": "Сбросить"
+    },
+    "Tile": {
+      "info": "Подробнее",
+      "want": "Хочу",
+      "discount": "Скидка",
+      "vendor": "Вендор",
+      "expired": "Срок действия"
+    },
+    "Profile": {
+      "activeTab": "У вас нет активных скидок",
+      "favoriteTab": "У вас нет избранных скидок",
+      "historyTab": "У вас нет истории",
+      "logged": "Вы авторизовались как",
+      "location": "Локация",
+      "favorite": "Избранное",
+      "history": "История",
+      "activeDiscounts":"Активные скидки",
+      "category": "Категория",
+      "discountName": "Название скидки",
+      "promo": "Промо",
+      "endDate": "Дата окончания",
+      "title": {
+        "history": "История",
+        "favorite": "Избранное",
+        "active": "Активные скидки"
+      }
+    },
+    "Stepper": {
+      "vendorInfo": "Информация о вендоре",
+      "selectedVendor": "Выбранный вендор",
+      "FirstStep": {
+        "vendorName": "Имя вендора",
+        "vendorNamePlaceholder": "Добавьте имя вендора",
+        "vendorNameError": "Имя вендора не может быть пустым",
+        "vendorDescription": "Описание",
+        "vendorDescriptionPlaceholder": "Добавьте описание",
+        "vendorDescriptionError": "Описание не может быть пустым",
+        "vendorContacts": "Контакты вендора",
+        "vendorContactsPlaceholder": "Добавьте контакты",
+        "vendorContactsError": "Контакты не могут быть пустыми",
+        "country": "Выберите или добавьте страну",
+        "countryLabel": "Страна",
+        "city": "Выберите или добавьте город",
+        "cityLabel": "Город",
+        "coordinates": "Добавьте координаты",
+        "latitude": "Широта",
+        "longitude": "Долгота",
+        "removeCoordinates": "Удалить координаты",
+        "locations": "Локации"
+      },
+      "vendorBpInfo": "Информация о скидке",
+      "SecondStep": {
+        "vendor": "Вендор",
+        "addBp": "Добавить скидку",
+        "editBp": "Редактировать скидку",
+        "bpName": "Название",
+        "addBpName": "Добавьте название скидки",
+        "category": "Категория",
+        "addCategory": "Добавьте новую категорию",
+        "tags": "Теги",
+        "addTags": "Добавьте новый тег",
+        "bpPhotos": "Фотографии",
+        "bpPhotosPlaceholder": "Добавьте фотографии",
+        "description": "Описание",
+        "descriptionPlaceholder": "Добавьте описание",
+        "eventStart": "Начало акции",
+        "eventEnd": "Конец акции",
+        "type": "Тип скидки",
+        "typePercent": "ПРОЦЕНТ",
+        "typePrice": "ЦЕНА",
+        "bonusSize": "Размер скидки",
+        "promo": "Промокод",
+        "location": "Локации",
+        "lat": "Широта",
+        "long": "Долгота"
+      },
+      "vendorMessage": "Сообщение",
+      "finalMessage": "Вся информация была успешно сохранена!"
+    },
+    "Global": {
+      "back": "Назад",
+      "clear": "Очистить",
+      "save": "Сохранить",
+      "delete": "Удалить",
+      "add": "Добавить",
+      "logout": "Выйти"
+    }
+  },
+  "LANGUAGES": {
+    "EN": "EN",
+    "RU": "RU"
+  }
+}

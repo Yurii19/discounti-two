@@ -1,0 +1,16 @@
+<div class="history " *ngIf="profileCoupons$ | async as coupons">
+
+    <div class="history-item col-12 col-md-5 col-xl-3" *ngFor="let coupon of coupons">
+        <div>
+          <p class="dicountName">{{ coupon.discount.name }}</p>
+          <p class="dicountPromo">{{ coupon.discount.promo }}</p>
+        </div>
+        <div>
+          <p class="dicountStart">Start: {{ coupon.discount.startTime | date:'short' }}</p>
+          <p class="dicountEnd">End: {{ coupon.discount.endTime | date:'short'}}</p>
+        </div>
+      </div>
+
+  </div>
+  <p class="notFound" *ngIf="(profileCoupons$ | async)?.length==0">{{ 'COMMON.Profile.activeTab' | translate }}</p>
+  

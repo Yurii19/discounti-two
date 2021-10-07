@@ -1,0 +1,32 @@
+.sideBar {
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.444);
+  background-color: #fff;
+  transition: box-shadow 5s;
+
+  &:hover {
+    box-shadow: 0 0 10px #0082ca;
+  }
+  form {
+    padding-bottom: 10px;
+  }
+
+  &__form-field {
+    width: 100%;
+    max-width: 220px;
+  }
+}
+.buttons-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.mat-input-element {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  padding-left: 10px;
+}

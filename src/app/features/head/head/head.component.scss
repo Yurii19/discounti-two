@@ -1,0 +1,87 @@
+.cover {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  width: 1280px;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+.search-container{
+  display: flex;
+  align-items: center;
+
+  form{
+    width: 100%;
+  }
+}
+  .left-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .right-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.tabs {
+  * {
+    color: #0082ca;
+  }
+}
+.notification {
+  cursor: pointer;
+}
+
+mat-list {
+  z-index: 999;
+  position: absolute;
+
+  border-radius: 10px;
+  width: 300px;
+  left: -275px;
+}
+
+.mat-list-item {
+  font-size: 0.6em;
+  background-color: hsla(196, 100%, 59%, 0.3);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  text-align: left;
+  box-shadow: inset 0 0 3px 0 black;
+  border-radius: 5px;
+}
+
+.langButton {
+  &:hover {
+    color: gold;
+  }
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}

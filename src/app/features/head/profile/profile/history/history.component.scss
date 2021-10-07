@@ -1,0 +1,16 @@
+.couponHistoryTable{
+  width: 100%;
+}
+table {
+  width: 100%;
+  margin-left: 10px;
+  td{
+    padding-right: 0;
+  }
+}
+.notFound{
+  font-size: 24px;
+  color: hsla(0, 0%, 60%, 0.5);
+  text-align: center;
+  margin-top: 30px;
+}
