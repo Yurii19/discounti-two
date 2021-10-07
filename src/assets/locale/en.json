@@ -45,7 +45,8 @@
       "home": "Home",
       "profile": "Profile",
       "vendor": "Vendor",
-      "statistic": "Statistic"
+      "statistic": "Statistic",
+      "admin":"Admin"
     },
     "Home": {
       "sort": "Sort by",

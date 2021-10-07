@@ -29,6 +29,7 @@ import { notificationsReducer } from './core/store/redeucers/notifications.reduc
 import { NotificationsEffects } from './core/store/effects/notifications.effects';
 import { vendorReducer } from './core/store/redeucers/vendor.reducer';
 import { SharedModule } from "./shared/shared.module";
+import { AdminModule } from './features/head/admin/admin.module';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import { SharedModule } from "./shared/shared.module";
     AppRoutingModule,
     NgbModule,
     SharedModule,
+    AdminModule
   ],
   declarations: [
     AppComponent,
