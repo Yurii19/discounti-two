@@ -175,6 +175,7 @@ export class HeadComponent implements OnInit, AfterContentChecked, OnDestroy {
      { link: 'profile/history', label: 'COMMON.Head.profile' },
      { link: 'vendor', label: 'COMMON.Head.vendor' },
      { link: 'statistic', label: 'COMMON.Head.statistic' },
+     { link: 'admin', label: 'COMMON.Head.statistic' },
     ]
     :
     [

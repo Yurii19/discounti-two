@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HeadComponent } from './head/head.component';
-import { VendorComponent } from "./vendor/vendor/vendor.component";
-import { StatisticComponent } from "./statistic/statistic/statistic.component";
-import { ProfileComponent } from "./profile/profile/profile.component";
-import { DescriptionComponent } from "./description/description.component";
-import { HomeComponent } from "./home/home/home.component";
-import {FavoriteComponent} from "./profile/profile/favorite/favorite.component";
-import {HistoryComponent} from "./profile/profile/history/history.component";
-import {ActiveComponent} from "./profile/profile/active/active.component";
+import { VendorComponent } from './vendor/vendor/vendor.component';
+import { StatisticComponent } from './statistic/statistic/statistic.component';
+import { ProfileComponent } from './profile/profile/profile.component';
+import { DescriptionComponent } from './description/description.component';
+import { HomeComponent } from './home/home/home.component';
+import { FavoriteComponent } from './profile/profile/favorite/favorite.component';
+import { HistoryComponent } from './profile/profile/history/history.component';
+import { ActiveComponent } from './profile/profile/active/active.component';
 import { AdminGuard } from 'src/app/core/guards/admin.guard';
+import { AdminComponent } from './admin/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'home',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'home',
@@ -33,12 +34,12 @@ const routes: Routes = [
       {
         path: 'vendor',
         component: VendorComponent,
-        canActivate: [AdminGuard]
+        canActivate: [AdminGuard],
       },
       {
         path: 'statistic',
         component: StatisticComponent,
-        canActivate: [AdminGuard]
+        canActivate: [AdminGuard],
       },
       {
         path: 'profile',
@@ -56,14 +57,18 @@ const routes: Routes = [
             path: 'active',
             component: ActiveComponent,
           },
-        ]
+        ],
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
       }
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class HeadRoutingModule {}
