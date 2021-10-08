@@ -1,5 +1,9 @@
 span {
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 2px;
+  padding: 2px 4px 2px 4px;
+  border-radius: 3px;
   margin: 2px;
+  &:hover{
+    cursor: pointer;
+  }
 }

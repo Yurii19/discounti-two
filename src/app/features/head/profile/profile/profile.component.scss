@@ -106,3 +106,7 @@ $grey: hsla(0, 0%, 60%, 0.5);
     clear: both;
   }
 }
+
+.active-link {
+  background-color: $base-color;
+}
