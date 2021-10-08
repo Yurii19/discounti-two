@@ -172,7 +172,7 @@ export class HeadComponent implements OnInit, AfterContentChecked, OnDestroy {
     this.tabItems = (this.userRole === 'ROLE_ADMIN') ?
     [
      { link: 'home', label: 'COMMON.Head.home' },
-     { link: 'profile/history', label: 'COMMON.Head.profile' },
+     { link: 'profile', label: 'COMMON.Head.profile' },
      { link: 'vendor', label: 'COMMON.Head.vendor' },
      { link: 'statistic', label: 'COMMON.Head.statistic' },
      { link: 'admin', label: 'COMMON.Head.admin' },

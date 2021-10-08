@@ -38,6 +38,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ChartsModule } from 'ng2-charts';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { ProfileRootComponent } from './profile/profile/profile-root/profile-root.component';
 
 
 // required for AOT compilation
@@ -66,6 +67,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     FavoriteComponent,
     ActiveComponent,
     HistoryComponent,
+    ProfileRootComponent,
   ],
   exports: [
     MapComponent,
