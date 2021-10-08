@@ -1,19 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+} from '@angular/router';
 
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  styleUrls: ['./breadcrumbs.component.scss'],
 })
 export class BreadcrumbsComponent implements OnInit {
+  history: string [] = [];
 
-  history: any = 'History';
-
-  constructor(private router : Router ) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    console.log('Router', this.router.config)
+    this.history.push( this.router.url);
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const arrOfPaths = this.router.url.split('/');
+    this.history = arrOfPaths.filter(el => el);
+    console.log(arrOfPaths)
+      }
+    });
+
+    
   }
 
 }
