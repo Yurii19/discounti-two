@@ -61,7 +61,6 @@
         </mat-label>
         <mat-select
           formControlName="category"
-          (selectionChange)="selectCategory($event.value)"
         >
           <mat-option
             *ngFor="let category of categories$ | async"
