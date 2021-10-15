@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { createSelector, Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { NotificationService } from 'src/app/core/core.module';
 import { CategoriesService } from 'src/app/core/services/categories.service';
 import { DiscountService } from 'src/app/core/services/discount.service';
@@ -44,16 +45,8 @@ export class StepEditBpComponent implements OnInit, OnDestroy {
 
   tagsSet: any;
 
-  aSub!: Subscription;
-  subSlelectVendor: Subscription;
-  subVendorDiscounts!: Subscription;
-  subTags!: Subscription;
-  subSlelectLocations!: Subscription;
-  subUpdateRequest!: Subscription;
-  subCreateRequest!: Subscription;
-  subRemoveDiscountReq!: Subscription;
-  subCreateCategoryReq!: Subscription;
-  subCreateTagReq!: Subscription;
+  destroy$: Subject<any> = new Subject<any>();
+  //.pipe(takeUntil(this.destroy$))
 
   vendor: any;
   vendorDiscounts!: IDiscount[];
@@ -91,33 +84,37 @@ export class StepEditBpComponent implements OnInit, OnDestroy {
 
     this.selectedVendor$ = this.store.select(selectVendorData);
 
-    this.subSlelectVendor = this.selectedVendor$.subscribe((vendor) => {
-      if(vendor.id){
+    this.selectedVendor$.pipe(takeUntil(this.destroy$)).subscribe((vendor) => {
+      if (vendor.id) {
         this.getLocations(vendor.id);
       }
-      this.getVendorsById(vendor.id).subscribe((data) => {
-        this.vendor = data;
-        this.getDisounts(vendor.id);
-      });
+      this.getVendorsById(vendor.id)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((data) => {
+          this.vendor = data;
+          this.getDisounts(vendor.id);
+        });
     });
     //END OF CONSTRUCTOR
   }
 
-  getLocations(vendorId: string){
-    this.subSlelectLocations = this.vendorsService
-        .getVendorLocations(vendorId)
-        .subscribe((data) => {
-          this.vendorLocations = data.map((el: any) => this.makeLocation(el));
-        });
+  getLocations(vendorId: string) {
+    this.vendorsService
+      .getVendorLocations(vendorId)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.vendorLocations = data.map((el: any) => this.makeLocation(el));
+      });
   }
 
-  clickGetLocation(){
+  clickGetLocation() {
     this.getLocations(this.vendor.id);
   }
 
   getDisounts(vendorId: string) {
-    this.subVendorDiscounts = this.vendorsService
+    this.vendorsService
       .getVendorDiscounts(vendorId)
+      .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
         this.vendorDiscounts = data.map((rawDiscount: any) => {
           return this.handleDiscount.handleRemoteDiscount(rawDiscount);
@@ -126,8 +123,7 @@ export class StepEditBpComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    
-    this.subTags = this.tagsService.getTags().subscribe((data) => {
+    this.tagsService.getTags().subscribe((data) => {
       this.tagsSet = data;
     });
 
@@ -155,42 +151,18 @@ export class StepEditBpComponent implements OnInit, OnDestroy {
         contacts: '',
       })
     );
-    if (this.aSub) {
-      this.aSub.unsubscribe();
-    }
-    if (this.subSlelectVendor) {
-      this.subSlelectVendor.unsubscribe();
-    }
-    if (this.subVendorDiscounts) {
-      this.subVendorDiscounts.unsubscribe();
-    }
-    if (this.subUpdateRequest) {
-      this.subUpdateRequest.unsubscribe();
-    }
-    if (this.subCreateRequest) {
-      this.subCreateRequest.unsubscribe();
-    }
-    if (this.subRemoveDiscountReq) {
-      this.subRemoveDiscountReq.unsubscribe();
-    }
-    if (this.subCreateCategoryReq) {
-      this.subCreateCategoryReq.unsubscribe();
-    }
-    if(this.subCreateTagReq){
-      this.subCreateTagReq.unsubscribe()
-    }
-  }
-
-  selectCategory(ev: any) {
-    // console.log(ev);
+    
+    this.destroy$.next();
+    this.destroy$.unsubscribe();
   }
 
   removeDiscount() {
     if (
       confirm(`Do you really want delete vendor ${this.currentDiscountName}?`)
     ) {
-      this.subRemoveDiscountReq = this.discountService
+      this.discountService
         .removeDiscountById(this.currentDiscount)
+        .pipe(takeUntil(this.destroy$))
         .subscribe((resp) => {
           this.getDisounts(this.vendor.id);
           this.notification.info(
@@ -217,10 +189,10 @@ export class StepEditBpComponent implements OnInit, OnDestroy {
       vendorId: this.vendor.id,
       vendorLocationsIds: this.discountForm.get('locations')?.value,
     };
-    // console.log(newDiscount);
     if (this.currentDiscount) {
-      this.subUpdateRequest = this.discountService
+      this.discountService
         .updateDiscount(JSON.stringify(newDiscount), this.currentDiscount)
+        .pipe(takeUntil(this.destroy$))
         .subscribe((resp) => {
           this.getDisounts(this.vendor.id);
           this.currentDiscount = null;
@@ -229,8 +201,9 @@ export class StepEditBpComponent implements OnInit, OnDestroy {
           );
         });
     } else {
-      this.subCreateRequest = this.discountService
+      this.discountService
         .createDiscount(JSON.stringify(newDiscount))
+        .pipe(takeUntil(this.destroy$))
         .subscribe((resp) => {
           this.getDisounts(this.vendor.id);
           this.notification.success(
@@ -246,21 +219,26 @@ export class StepEditBpComponent implements OnInit, OnDestroy {
 
   createCategory(): void {
     const newCategoryName: string = this.newCategoryInput.value;
-    this.subCreateCategoryReq = this.categoriesService
+    this.categoriesService
       .createCategory({ name: newCategoryName })
+      .pipe(takeUntil(this.destroy$))
       .subscribe((resp: any) => {
-        this.notification.success(`Category ${newCategoryName} successfully created !`)
+        this.notification.success(
+          `Category ${newCategoryName} successfully created !`
+        );
         this.categories$ = this.categoriesService.getCategories();
       });
   }
 
   createTag(): void {
     const newTagName = this.newTagInput.value;
-    this.subCreateTagReq =
-    this.tagsService.createTag({ name: newTagName }).subscribe((resp: any)=>{
-      this.notification.success(`Tag ${newTagName} successfully created !`)
-      this.tags$ = this.tagsService.getTags();
-    });
+    this.tagsService
+      .createTag({ name: newTagName })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((resp: any) => {
+        this.notification.success(`Tag ${newTagName} successfully created !`);
+        this.tags$ = this.tagsService.getTags();
+      });
   }
 
   editDiscount(discountId: any) {
@@ -283,7 +261,6 @@ export class StepEditBpComponent implements OnInit, OnDestroy {
         promo: discount.promo,
         locations: discount.vendorLocations.map(
           (el: any) => el.id
-          // this.makeLocation(el)
         ),
       });
     });
@@ -303,6 +280,5 @@ export class StepEditBpComponent implements OnInit, OnDestroy {
   resetDiscount() {
     this.discountForm.reset();
     this.currentDiscount = '';
-    // console.log('hello');
   }
 }

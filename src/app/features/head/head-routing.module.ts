@@ -11,8 +11,8 @@ import { FavoriteComponent } from './profile/profile/favorite/favorite.component
 import { HistoryComponent } from './profile/profile/history/history.component';
 import { ActiveComponent } from './profile/profile/active/active.component';
 import { AdminGuard } from 'src/app/core/guards/admin.guard';
-import { AdminComponent } from './admin/admin/admin.component';
 import { ProfileRootComponent } from './profile/profile/profile-root/profile-root.component';
+import { AdminContainerComponent } from './admin/admin-container/admin-container.component';
 
 const routes: Routes = [
   {
@@ -66,7 +66,7 @@ const routes: Routes = [
       },
       {
         path: 'admin',
-        component: AdminComponent,
+        component: AdminContainerComponent,
       }
     ],
   },
