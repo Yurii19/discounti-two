@@ -6,7 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  @Input() inputData : any = {adminName: 'Admin'} ;
+
+  @Input() adminData: any = { name: 'Admin' };
   title: string = 'admin component';
 
   constructor() {}
