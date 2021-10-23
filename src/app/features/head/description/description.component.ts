@@ -37,7 +37,7 @@ export class DescriptionComponent implements OnInit {
 
     const selectDescription = createSelector(
       selecDescription,
-      (state: any) => state.description
+      (state: any) => state? state.description : ''
     );
     this.descriptionData$ = this.store.pipe(select(selectDescription));
     const selectMarkers = createSelector(selecDescription, (state) => [
