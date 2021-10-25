@@ -1,5 +1,24 @@
 mat-card {
-  width: 95%;
+  // width: 95%;
   margin: 0 auto;
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  h2 {
+    margin: 0;
+  }
+}
+
+.users-box {
+  span{
+    display: block;
+    border-left: 2px solid brown;
+  }
+}
+
+form {
+  * {
+    margin-left: 10px;
+  }
 }

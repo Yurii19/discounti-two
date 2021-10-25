@@ -29,4 +29,5 @@ describe('DescriptionComponent', () => {
   it('markers$ should be object', () => {
     expect(typeof component.markers$).toBe('object');
   });
+  
 });

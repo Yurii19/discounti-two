@@ -28,6 +28,9 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (token != null){
       authReq = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token)})
+      if(authReq.url.startsWith('https://api.github.com/users') ){
+        authReq = req;
+      }
       if(authReq.url.endsWith('/authenticate/refresh') ){
         const refreshToken = window.sessionStorage.getItem('refreshToken');
         authReq = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + refreshToken)})
