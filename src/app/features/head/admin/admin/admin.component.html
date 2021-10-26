@@ -10,24 +10,30 @@
           >New github user
           <input
             type="text"
-            (input)="inputUser($event)"
+            (input)="inputUser()"
             [formControl]="inputUserFC"
+            placeholder="github login"
           /> </label
-        ><button (click)="clear()">Clear</button>
+        ><button (click)="clear()" id="clear">Clear</button>
         <button (click)="addNewUser()">Add user</button>
 
-        <span>{{ newUserName }}</span>
-        <span>There are<b>{{userList.length}}</b> users</span>
+        <span>{{ newUserName | titlecase }}</span>
+        <span
+          >There are<b>{{ userList.length }}</b> users</span
+        >
       </form>
       <div class="users-box">
-        <span *ngFor="let user of userList">{{ user }}</span>
+        <span *ngFor="let user of userList">{{ user | titlecase }}</span>
       </div>
       <div class="info">
         <!-- <p *ngFor="let value of userInfo1">{{value}}</p> -->
         <p><b>Name : </b> {{ userInfo.name }}</p>
         <p><b>Login : </b> {{ userInfo.login }}</p>
         <p><b>Repos number : </b> {{ userInfo.public_repos }}</p>
-        <p><b>Repos : </b> <a href="{{ userInfo.repos_url }}">{{ userInfo.repos_url }}</a> </p>
+        <p>
+          <b>Repos : </b>
+          <a href="{{ userInfo.repos_url }}">{{ userInfo.repos_url }}</a>
+        </p>
       </div>
     </div>
   </div>
