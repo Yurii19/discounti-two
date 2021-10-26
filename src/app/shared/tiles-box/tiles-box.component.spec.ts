@@ -23,7 +23,4 @@ describe('TilesBoxComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  alertQ(){
-    alert('asdfsdf');
-  }
 });

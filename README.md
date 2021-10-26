@@ -1,5 +1,7 @@
 # Discounti
 
+strat tests the Admin component ng test --include src/app/features/head/admin/admin/admin.component.spec.ts
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
 
 ## Development server
